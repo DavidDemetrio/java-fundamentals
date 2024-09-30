@@ -71,7 +71,7 @@ public class IDgenerate {
         return 1234;
     }
 
-    static void clearConsole() {
+    static void clearConsole () {
         // First Option to clear the console
         // Using ANSI Escape Code
         System.out.print("\033[H\033[2J");
@@ -81,5 +81,12 @@ public class IDgenerate {
             // \033[H Location cursor left superior
             // \033[2J Clear screen from init cursor to end the screen.
 
+
+        // Second Option: Using Platform-Specific Command
+        // This method is deprecareted to version 18 java or major
+        // Runtime.getRuntime().exec("cls");
+
+        // Threeth: 
+        // new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }
