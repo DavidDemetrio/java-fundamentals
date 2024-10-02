@@ -1,0 +1,2 @@
+Package: Directories and folders collection. They allow us organizer the clases.
+Herencia: Class Super Class --- SubClass hereda métodos de la clase padre.
