@@ -19,6 +19,14 @@ class Perro extends Animal {
     public void hacerSonido() {
         System.out.println("Puedo ladrar.");
     }
+
+    @Override // indicar al compilador que este método se está sobreescribiendo
+    public void dormir() {
+        System.out.println("Duermo 15 horas");
+        // Accediendo al método de la clase padre, una vez que se ha sobreescrito el
+        // método en la clase hija
+        super.dormir();
+    }
 }
 
 
