@@ -1,32 +1,37 @@
 package classObjects;
 
 public class Persona {
+    /**
+     * @Nota Los valores estáticos se crean para poder manipularlos
+     *       como un atributo de la misma clase y no de los objetos.
+     *       Todos los objetos instanciados de la clase Persona, pueden acceder
+     *       a el mismo valor de contadorPersonas.
+     */
+    private static int contadorPersonas = 0;
+    private int idPersona = 0;
     // String NO ES UN DATA TYPE PRIMITIVE SINO DE TIPO DE DATO DE CLASE
     String nombre, apellido;
+
+    public Persona(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.idPersona = ++Persona.contadorPersonas;
+    }
 
     void mostrarPersona() {
         System.out.println("Nombre: " + nombre);
         System.out.println("Apellido: " + apellido);
     }
 
-    /**
-     * Por cuestiones de práctica, se instancian los objectos dentro de la misma
-     * clase, pero ya en proyectos reales no se debe hacer de esta manera
-     * @param args
-    */
-    public static void main(String[] args) {
-        Persona obj1 = new Persona();
-        // Por cuestiones de aprendizaje de clases y objectos en Java
-        // se hace de esta forma el set de los attributes, pero ESTO NO ES UNA BUENA PRÁCTICA
-        // EN EL FUTURO VEREMOS OTRAS MEJORES OPCIONES
-        obj1.nombre = "David";
-        obj1.apellido = "López";
-        obj1.mostrarPersona();
+    @Override
+    public String toString() {
+        return "Id: " + this.idPersona
+                + " Nombre: " + this.nombre
+                + " Apellido: " + this.apellido
+                + " Dir. Mem: " + super.toString();
+    }
 
-        // Instancia de Segundo objeto
-        Persona obj2 = new Persona();
-        obj2.nombre = "Alicia";
-        obj2.apellido = "Paz";
-        obj2.mostrarPersona();
+    public static int getContadorPersonas() {
+        return Persona.contadorPersonas;
     }
 }

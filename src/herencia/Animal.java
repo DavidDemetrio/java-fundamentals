@@ -1,14 +1,8 @@
 package herencia;
 
 public class Animal {
-    // Método público para poder acceder desde otras clases, inlcluso de 
-    // aquellas que están en otros paquetes
-    public void comer() {
-        System.out.println("como muchas veces al día");
-    }
-    
-    public void dormir() {
-        System.out.println("Duermo mucho en la tarde!");
+    public void hacerSonido() {
+        System.out.println("El animal hace  un sonido");
     }
 }
 
@@ -16,34 +10,33 @@ public class Animal {
 // aquí puede ir una tercera clase ... ambas clases son visibles únicamente dentro de 
 // este mismo paquete
 class Perro extends Animal {
+    @Override // indicar al compilador que este método se está sobreescribiendo
     public void hacerSonido() {
         System.out.println("Puedo ladrar.");
     }
+}
 
+class Gato extends Animal {
     @Override // indicar al compilador que este método se está sobreescribiendo
-    public void dormir() {
-        System.out.println("Duermo 15 horas");
-        // Accediendo al método de la clase padre, una vez que se ha sobreescrito el
-        // método en la clase hija
-        super.dormir();
+    public void hacerSonido() {
+        System.out.println("Puedo maullar");
     }
 }
 
-
 class PruebaAnimal {
     public static void main(String[] args) {
-        System.out.println("*** Ejemplo Herencia ***");
-        System.out.println("<<<<<<<<<<<<<<<< Clase Padre (Súper Clase) >>>>>>>>>>>>>");
-        Animal animal1 = new Animal();
-        animal1.comer();
-        animal1.dormir();
-        // animal1.hacerSonido(); // it does not exist in parent class
+        System.out.println("*** Ejemplo de Polimorfismo ***");
 
-        System.out.println("<<<<<<<<<<<<<<<<< Clase hija (Subclase) >>>>>>>>>>>>>>>>");
-        Perro perro1 = new Perro();
-        perro1.comer();
-        perro1.dormir();
-        perro1.hacerSonido();
+        // var animal = new Animal();
+        
+        /**
+         * A pesar de tener la inferencia de tipo Animal,
+         * la instancia está apuntando a Gato, por lo que el método
+         * a ejecutar es igual a la del objeto que se está apuntando
+        */
+        Animal animal = new Gato(); // Polimorfismo
+
+        animal.hacerSonido();
     }
 }
 
